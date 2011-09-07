@@ -223,27 +223,44 @@ describe Game do
 end
 
 describe UserMove do
-  it 'should correctly convert to a user row'
+  before(:all) do
+    @board = Board.new(5, 5)
   end
 
-  it 'should correctly convert from a user row'
+  it 'should correctly convert to a user row' do
+    internal_row = 4
+    user_row = UserMove.row_internal_to_user(internal_row, @board.height)
+    user_row.should == "1"
   end
 
-  it 'should correctly convert to a user col'
+  it 'should correctly convert from a user row' do
+    user_row = "1"
+    internal_row = UserMove.row_user_to_internal(user_row, @board.height)
+    internal_row.should == 4
   end
 
-  it 'should correctly convert from a user col'
+  it 'should correctly convert to a user col' do 
+    input_col = 3
+    user_col = UserMove.col_internal_to_user(input_col)
+    user_col.should == "d"
   end
 
-  it 'should correctly convert to a user  move'
+  it 'should correctly convert from a user col' do 
+    user_col = "b"
+    internal_col = UserMove.col_user_to_internal(user_col)
+    internal_col.should == 1
   end
 
-  it 'should correctly convert from a user  move'
+  it 'should correctly convert to a user  move' do 
+    
   end
 
-  it 'should generate an invalid coord if row is bad'
+  it 'should correctly convert from a user  move' do 
   end
 
-  it 'should generate an invalid coord if col is bad'
+  it 'should generate an invalid coord if row is bad' do
+  end
+
+  it 'should generate an invalid coord if col is bad' do
   end
 end
