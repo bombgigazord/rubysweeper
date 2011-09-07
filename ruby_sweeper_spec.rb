@@ -251,11 +251,13 @@ describe UserMove do
     internal_col.should == 1
   end
 
-  it 'should correctly convert to a user  move' do 
-    
-  end
-
-  it 'should correctly convert from a user  move' do 
+  it 'should correctly convert from a user move' do 
+    stubbed_input = "b3"
+    height = 5
+    width = 5
+    coord = Coordinate.new(2, 1)
+    UserMove.stub!(:gets).and_return(stubbed_input)
+    UserMove.get_move_coord_from_input(height, width).should == coord
   end
 
   it 'should generate an invalid coord if row is bad' do

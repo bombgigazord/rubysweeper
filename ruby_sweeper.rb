@@ -285,9 +285,10 @@ module RubySweeper
     class << self
       #we don't do anything iwth board width. TODO: error-checking
       def get_move_coord_from_input(board_height, board_width)
-         input_list = gets.split(" ")
-          row_str, col_str = input_list
-          return Coordinate.new(row_str.to_i, col_str.to_i)
+         input = gets
+         col_str = col_user_to_internal(input[0])
+         row_str = row_user_to_internal(input[1], board_height)
+         return Coordinate.new(row_str, col_str)
       end
      
       def row_user_to_internal(row_str, board_height)
